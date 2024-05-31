@@ -45,3 +45,12 @@ When calling colon build in ROS2 you will often see it compile everything perfec
 ```
 pip install setuptools==58.2.0
 ```
+
+### Now you should be able to build everything with no errors!
+1. On a clean bash shell to ROS2 workspace with px4_msgs and px4_ros_com already compiled
+2. Make sure conda is NOT activated
+3. Make sure workspace is NOT sourced
+4. Call this on the package you want to build:
+```
+colcon build --packages-select **PACKAGE_NAME** --symlink-install
+```
