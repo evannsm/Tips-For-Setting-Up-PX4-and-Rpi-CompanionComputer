@@ -10,7 +10,7 @@ Troubleshooting info to set up Ubuntu 22.04.4 LTS (Jammy Jellyfish) on Rasbperry
 4. Install the MicroRTPS Agent to connect to topics from Pixhawk Board
 5. Set up wiring cables using these [instructions](https://docs.px4.io/v1.14/en/companion_computer/pixhawk_rpi.html#wiring)
 6. Follow these [instructions](https://docs.px4.io/v1.14/en/ros/ros2_comm.html#build-ros-2-workspace) to set up a ROS2 workspace that contains PX4 message definitions as well as some example code for working with PX4 stack and run the [example](https://docs.px4.io/v1.14/en/ros/ros2_comm.html#running-the-example) to make sure it all works.
-7. _Warning_: Compiling px4_msgs take **FOREVERRRRR**
+7. **Warning**: Compiling px4_msgs take _FOREVERRRRR_
 
    
 ## Troubleshooting for Running Everything Smoothly with ROS and PX4
