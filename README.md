@@ -1,5 +1,5 @@
 # Setting Up Ubuntu-Rpi Properly
-Troubleshooting info to set up Ubuntu 22.04.4 LTS (Jammy Jellyfish) on Rasbperry Pi for ROS2 (Humble) and ensure it works with PX4 stack Via Telem2 Port on Pixhawk 6X Board.
+Troubleshooting info to set up Ubuntu 22.04.4 LTS (Jammy Jellyfish) on Rasbperry Pi for ROS2 (Humble) and ensure it works with PX4 stack via Telem2 Port on Pixhawk 6X Board.
 
 # 2024 Version
 ## Preliminary Setup
