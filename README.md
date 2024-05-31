@@ -14,6 +14,17 @@ Troubleshooting info to set up Ubuntu 22.04.4 LTS (Jammy Jellyfish) on Rasbperry
    
 ## Troubleshooting for Running Everything Smoothly with ROS and PX4
 1. Get the package you want to run from your github and put it in your [ros_ws_name]/src/ and then go back to root
-2. You're going to want to use Conda to keep your dependencies in order. Conda **miniforge** which emphasises supporting various CPU architectures like _aarch64_ which is what the Raspberry Pi 4 Model B uses (you can check this using the "uname -m" command in bash shell). Install miniforge from the instructions [here](https://github.com/conda-forge/miniforge?tab=readme-ov-file#install) (I like the curl instructions).
-3. 
+
+### Conda Instructions
+You're going to want to use Conda to keep your dependencies in order.
+Conda **miniforge** which emphasises supporting various CPU architectures like _aarch64_ which is what the Raspberry Pi 4 Model B uses (you can check your CPU architecture using the "uname -m" command in bash shell).
+1. Install miniforge from the instructions [here](https://github.com/conda-forge/miniforge?tab=readme-ov-file#install) (I like the curl instructions).
+2. Once Conda is installed, you can make sure conda commands are [recognized by bash shell using this](https://askubuntu.com/questions/849470/how-do-i-activate-a-conda-environment-in-my-bashrc)
+```
+echo ". /home/<user>/miniconda3/etc/profile.d/conda.sh" >> ~/.bashrc
+```
+3. And then prevent base conda environment from opening by default by having conda activated [and then calling this](https://stackoverflow.com/questions/54429210/how-do-i-prevent-conda-from-activating-the-base-environment-by-default)
+```
+conda config --set auto_activate_base false
+```
 
