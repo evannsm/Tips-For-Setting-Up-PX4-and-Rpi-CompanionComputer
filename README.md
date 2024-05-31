@@ -28,3 +28,13 @@ echo ". /home/<user>/miniconda3/etc/profile.d/conda.sh" >> ~/.bashrc
 conda config --set auto_activate_base false
 ```
 
+### Torch Installation Tips
+For some reason pytorch has issues installing and then showing up when you run on the shell as opposed to running in a notebook on Vscode. Best way to install torch is to do:
+```
+conda create -n my-env
+conda activate my-env
+conda config --env --add channels conda-forge
+conda install numpy
+pip install torchvision
+```
+
