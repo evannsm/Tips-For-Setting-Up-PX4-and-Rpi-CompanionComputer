@@ -18,7 +18,7 @@ Troubleshooting info to set up Ubuntu 22.04.4 LTS (Jammy Jellyfish) on Rasbperry
 
 ### Conda Instructions
 You're going to want to use Conda to keep your dependencies in order.
-Conda **miniforge** which emphasises supporting various CPU architectures like _aarch64_ which is what the Raspberry Pi 4 Model B uses (you can check your CPU architecture using the "uname -m" command in bash shell).
+Specifically, use conda **miniforge** which emphasises supporting various CPU architectures like _aarch64_ which is what the Raspberry Pi 4 Model B uses (you can check your CPU architecture using the "uname -m" command in bash shell).
 1. Install miniforge from the instructions [here](https://github.com/conda-forge/miniforge?tab=readme-ov-file#install) (I like the curl instructions).
 2. Once Conda is installed, you can make sure conda commands are [recognized by bash shell using this](https://askubuntu.com/questions/849470/how-do-i-activate-a-conda-environment-in-my-bashrc)
 ```
