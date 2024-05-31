@@ -10,7 +10,7 @@ Troubleshooting info to set up Ubuntu 22.04.4 LTS (Jammy Jellyfish) on Rasbperry
 4. Install the MicroRTPS Agent to connect to topics from Pixhawk Board
 5. Set up wiring cables using these [instructions](https://docs.px4.io/v1.14/en/companion_computer/pixhawk_rpi.html#wiring)
 6. Follow these [instructions](https://docs.px4.io/v1.14/en/ros/ros2_comm.html#build-ros-2-workspace) to set up a ROS2 workspace that contains PX4 message definitions as well as some example code for working with PX4 stack and run the [example](https://docs.px4.io/v1.14/en/ros/ros2_comm.html#running-the-example) to make sure it all works.
-7. **Warning**: Compiling px4_msgs take _FOREVERRRRR_
+7. **Warning**: Compiling px4_msgs takes _FOREVERRRRR_
 
    
 ## Troubleshooting for Running Everything Smoothly with ROS and PX4
@@ -49,9 +49,11 @@ pip install setuptools==58.2.0
 
 ### Now you should be able to build everything with no errors!
 1. On a clean bash shell to ROS2 workspace with px4_msgs and px4_ros_com already compiled
-2. Make sure conda is NOT activated
-3. Make sure workspace is NOT sourced
-4. Call this on the package you want to build:
+2. Make sure your packages are in the ros2ws/src/ folder ready to be built
+3. Make sure conda is NOT activated
+4. Make sure workspace is NOT sourced
+5. Call this on the package you want to build:
 ```
 colcon build --packages-select **PACKAGE_NAME** --symlink-install
 ```
+6. The **symlink-install** ensures that you can edit python files and not have to rebuild the package every time!
