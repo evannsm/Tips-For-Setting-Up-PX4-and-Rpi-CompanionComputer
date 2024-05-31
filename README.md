@@ -29,12 +29,14 @@ conda config --set auto_activate_base false
 ```
 
 ### Torch Installation Tips
-For some reason pytorch has issues installing and then showing up when you run on the shell as opposed to running in a notebook on Vscode. Best way to install torch is to do:
+For some reason pytorch has issues installing and then showing up when you run on the shell as opposed to running in a notebook on Vscode. [Best way to install torch](https://stackoverflow.com/questions/54843067/no-module-named-torch) (and also numpy hehe) is to do:
 ```
-conda create -n my-env
-conda activate my-env
+conda create -n **NAME**
+conda activate **NAME**
 conda config --env --add channels conda-forge
 conda install numpy
 pip install torchvision
 ```
 
+### Fix Deprecated Setuptools Warning
+When calling colon build in ROS2 you will often see it compile everything perfectly, but throw you a light warning regarding the depracation of 
