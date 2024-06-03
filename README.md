@@ -12,6 +12,41 @@ Troubleshooting info to set up Ubuntu 22.04.4 LTS (Jammy Jellyfish) on Rasbperry
 6. Follow these [instructions](https://docs.px4.io/v1.14/en/ros/ros2_comm.html#build-ros-2-workspace) to set up a ROS2 workspace that contains PX4 message definitions as well as some example code for working with PX4 stack and run the [example](https://docs.px4.io/v1.14/en/ros/ros2_comm.html#running-the-example) to make sure it all works.
 7. **Warning**: Compiling px4_msgs takes _FOREVERRRRR_
 
+## Compatibility Tips between Autopilot Software on the Pixhawk Board and Message definitions
+Ensure that px4_msgs and the PX4 autopilot versions you run are compatible and make sure their ROS_DOMAIN_ID are compatible
+
+### On the Pixhawk Board Autipilot Firmware Side
+1. On a _Desktop_ computer (you can't connect pixhawk board to laptop because not enough power goes through). As of June2024 the best stable version is release 1.14 for everything. So go to a bash shell as instructed (here)[https://docs.px4.io/main/en/dev_setup/dev_env_linux_ubuntu.html] and call
+```
+git clone -b release/1.14 https://github.com/PX4/PX4-Autopilot.git --recursive
+```
+```
+bash ./PX4-Autopilot/Tools/setup/ubuntu.sh
+```
+
+2. Then follow the instructions [here] (https://docs.px4.io/main/en/dev_setup/building_px4.html) to build the firmware. It will be in the ~/PX4-Autopilot/build folder of your computer after it's done building. (I'm using a Pixhawk 6x board, so this command below will change depending on specific board)
+```
+make px4_fmu-v6x_default
+```
+
+3. Then you can load it onto the Pixhawk board using the instructions [here](https://docs.px4.io/main/en/config/firmware.html#installing-px4-main-beta-or-custom-firmware). Basically open QGroundControl (QGC) on a desktop, click on the Q in the top left, then click Vehicle Setup, then firmware, then connect the Pixhawk board, and then do a custom flash where you'll upload the .px4 file in the ~/PX4-Autopilot/build/px4_fmu-v6x_default folder of your computer)
+
+4. You can then go to the parameters section of QGC and do an upload of the **evannsdoneparams.params** file in this repository to borrow all of my parameters that set up this board specifically for a Holybro x500v2's dimensions, size, motors, etc. It also set up the radio input to interpret each channel on my transmitter how I like it (offboard switch, kill switch, land switch, throttle, angles, etc). Moreover (and probably most importantly) it sets up uxrce_dds to work with ROS2 via the Telem2 port according to the instructions shown above. **It specifically sets the ROS_DOMAIN_ID to be 31 to match what I have on my computer and what I will set up on my Rpi**
+
+### On the Raspberyy Pi Side
+1. When you follow the instructions to set up a ros2 workspace for PX4 work, make sure you do this:
+```
+mkdir -p ros2_ws/src
+git clone -b release/1.14 https://github.com/PX4/px4_msgs.git
+cd ~/ros2_ws
+colcon build
+```
+This ensures that you have the compatible ros2 message definitions for the px4 firmware you have
+2. Go to your ~/.bashrc and make sure you have the same ROS_DOMAIN_ID by adding this line to the bottom of your bashrc file
+```
+export ROS_DOMAIN_ID=31 # To ensure domain matches what is on the Pixhawk board and my computer
+```
+
    
 ## Troubleshooting for Running Everything Smoothly with ROS and PX4
 1. Get the package you want to run from your github and put it in your [ros_ws_name]/src/ and then go back to root
@@ -57,3 +92,7 @@ pip install setuptools==58.2.0
 colcon build --packages-select **PACKAGE_NAME** --symlink-install
 ```
 6. The **symlink-install** ensures that you can edit python files and not have to rebuild the package every time!
+
+### Possible Other Helpful Links
+1. [PX4-ROS2 Interface Lib](https://docs.px4.io/main/en/ros2/px4_ros2_interface_lib.html)
+2. Fixing topics that don't work randomly after you've built a new px4_msgs and you don't know why it's [not working](https://discuss.px4.io/t/ros2-uxrce-agent-cant-subscribe-to-published-topics/35734/10)
