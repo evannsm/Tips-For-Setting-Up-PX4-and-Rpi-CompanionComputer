@@ -75,6 +75,7 @@ conda create -n **NAME**
 conda activate **NAME**
 conda config --env --add channels conda-forge
 conda install numpy
+pip install scipy
 pip install torchvision
 ```
 
