@@ -34,10 +34,10 @@ make px4_fmu-v6x_default
 4. You can then go to the parameters section of QGC and do an upload of the **evannsdoneparams.params** file in this repository to borrow all of my parameters that set up this board specifically for a Holybro x500v2's dimensions, size, motors, etc. It also set up the radio input to interpret each channel on my transmitter how I like it (offboard switch, kill switch, land switch, throttle, angles, etc). Moreover (and probably most importantly) it sets up uxrce_dds to work with ROS2 via the Telem2 port according to the instructions shown above. **It specifically sets the ROS_DOMAIN_ID to be 31 to match what I have on my computer and what I will set up on my Rpi**
 
 I have:
-_UXRCE_DDS_DOM_ID_ = 31
-_UXRCE_DDS_PRT_ = 8888
-_UXRCE_DDS_CFG_ = TELEM 2
-_UXRCE_DDS_AG_IP_ = 2130706433 //THIS IS AN IP ADDRESS IN INT32 FORMAT: EX) 192.168.1.13 -> -1062731518 AND 127.0.0.1 -> 2130706433 (I KEPT THE DEFAULT VALUE)
+_UXRCE_DDS_DOM_ID_ = 31\
+_UXRCE_DDS_PRT_ = 8888\
+_UXRCE_DDS_CFG_ = TELEM 2\
+_UXRCE_DDS_AG_IP_ = 2130706433 //THIS IS AN IP ADDRESS IN INT32 FORMAT: EX) 192.168.1.13 -> -1062731518 AND 127.0.0.1 -> 2130706433 (I KEPT THE DEFAULT VALUE)\
 
 ### On the Raspberyy Pi Side
 1. When you follow the instructions to set up a ros2 workspace for PX4 work, make sure you do this:
