@@ -39,7 +39,7 @@ _UXRCE_DDS_PRT_ = 8888\
 _UXRCE_DDS_CFG_ = TELEM 2\
 _UXRCE_DDS_AG_IP_ = 2130706433 //THIS IS AN IP ADDRESS IN INT32 FORMAT: EX) 192.168.1.13 -> -1062731518 AND 127.0.0.1 -> 2130706433 (I KEPT THE DEFAULT VALUE)\
 
-### On the Raspberyy Pi Side
+### On the Raspbery Pi Side
 1. When you follow the instructions to set up a ros2 workspace for PX4 work, make sure you do this:
 ```
 mkdir -p ros2_ws/src
