@@ -94,6 +94,8 @@ export ACADOS_SOURCE_DIR="/home/*USERNAME*/acados/"
 ```
 Don't do something like "~/acados/lib". IT WILL NOT WORK. I wasted a week trying to figure out what I had done wrong initially :) when I made this mistake.
 
+Straight up just go to your ~/acados/ folder and enter "pwd" command and copy and paste it into where it says "<acados_root>" in step 4 of the python interface installation instructions. Badabim badaboom.
+
 ### Fix Deprecated Setuptools Warning
 When calling colon build in ROS2 you will often see it compile everything perfectly, but throw you a light warning regarding the [depracation regarding setuptools and your setup.cfg file](https://answers.ros.org/question/396439/setuptoolsdeprecationwarning-setuppy-install-is-deprecated-use-build-and-pip-and-other-standards-based-tools/)
 1. Make sure you have underscores ("_") in setup.cfg file for all of the packages you're calling colcon build on, and not hyphens ("-"). (Should already be like this but could be worth checking)
