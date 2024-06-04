@@ -83,7 +83,7 @@ pip install torchvision
 Should work now. Or maybe not. Just keep installing it every way possible until it works. Torch is weird like that with ROS2. It'll run on a ipynb, normal script, and even in the shell but not when running with "ros2 run ..."
 
 ### Acados & AcadosPython Interface Installation Tips
-You want to use the (CMake installation)[https://docs.acados.org/installation/index.html] for Linux/Mac as instructed in the python interface installation (instructions)[https://docs.acados.org/python_interface/index.html]
+You want to use the [CMake installation](https://docs.acados.org/installation/index.html) for Linux/Mac as instructed in the python interface installation [instructions](https://docs.acados.org/python_interface/index.html)
 1. Just note that when it says "Add the path to the compiled shared libraries" by adding the export lines to the .bashrc file, you don't want to use the ~/ shortcut, you want the fully spelled out without the ~/ shortcut to your user's home directory.
 Example:
 In your .bashrc you want to add:
