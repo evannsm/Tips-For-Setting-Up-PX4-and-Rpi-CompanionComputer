@@ -83,7 +83,16 @@ pip install torchvision
 Should work now. Or maybe not. Just keep installing it every way possible until it works. Torch is weird like that with ROS2. It'll run on a ipynb, normal script, and even in the shell but not when running with "ros2 run ..."
 
 ### Acados & AcadosPython Interface Installation Tips
-1. 
+You want to use the (CMake installation)[https://docs.acados.org/installation/index.html] for Linux/Mac as instructed in the python interface installation (instructions)[https://docs.acados.org/python_interface/index.html]
+1. Just note that when it says "Add the path to the compiled shared libraries" by adding the export lines to the .bashrc file, you don't want to use the ~/ shortcut, you want the fully spelled out without the ~/ shortcut to your user's home directory.
+Example:
+In your .bashrc you want to add:
+```
+# FOR ACADOS
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"/home/*USERNAME*/acados/lib"
+export ACADOS_SOURCE_DIR="/home/*USERNAME*/acados/"
+```
+Don't do something like "~/acados/lib". IT WILL NOT WORK. I wasted a week trying to figure out what I had done wrong initially :) when I made this mistake.
 
 ### Fix Deprecated Setuptools Warning
 When calling colon build in ROS2 you will often see it compile everything perfectly, but throw you a light warning regarding the [depracation regarding setuptools and your setup.cfg file](https://answers.ros.org/question/396439/setuptoolsdeprecationwarning-setuppy-install-is-deprecated-use-build-and-pip-and-other-standards-based-tools/)
