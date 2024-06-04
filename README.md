@@ -55,7 +55,6 @@ export ROS_DOMAIN_ID=31 # To ensure domain matches what is on the Pixhawk board 
 
    
 ## Troubleshooting for Running Everything Smoothly with ROS and PX4
-1. Get the package you want to run from your github and put it in your [ros_ws_name]/src/ and then go back to root
 
 ### Conda Instructions
 You're going to want to use Conda to keep your dependencies in order.
@@ -82,7 +81,9 @@ pip install torchvision
 ```
 Should work now. Or maybe not. Just keep installing it every way possible until it works. Torch is weird like that with ROS2. It'll run on a ipynb, normal script, and even in the shell but not when running with "ros2 run ..."
 
-### Acados & AcadosPython Interface Installation Tips
+## Acados & AcadosPython Interface Installation Tips
+This will probably be a pain in the ass. These tips should eliminate most if not all of that pain.
+
 You want to use the [CMake installation](https://docs.acados.org/installation/index.html) for Linux/Mac as instructed in the python interface installation [instructions](https://docs.acados.org/python_interface/index.html)
 1. Just note that when it says "Add the path to the compiled shared libraries" by adding the export lines to the .bashrc file, you don't want to use the ~/ shortcut, you want the fully spelled out without the ~/ shortcut to your user's home directory.
 Example:
@@ -96,7 +97,42 @@ Don't do something like "~/acados/lib". IT WILL NOT WORK. I wasted a week trying
 
 Straight up just go to your ~/acados/ folder and enter "pwd" command and copy and paste it into where it says "<acados_root>" in step 4 of the python interface installation instructions. Badabim badaboom.
 
-### Fix Deprecated Setuptools Warning
+2. Now, the next issue will come from t_renderer. The instructions will ask you to do the following
+```
+cd ~/acados/examples/acados_python/getting_started
+```
+```
+run python3 minimal example_ocp.py
+```
+It will then prompt you to download and save t_renderer in ~/acados/bin. This might work for some, it has never worked for me.
+
+The best way to go about this is:
+3. Go to [tera renderer github](https://github.com/acados/tera_renderer) and follow their instructions:
+You want to clone the directory into your home folder ~/
+```
+git clone https://github.com/acados/tera_renderer
+```
+
+Then make sure you can call the cargo command by using [rustup](https://www.rust-lang.org/tools/install)
+```
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
+Once this is done you can test your cargo install by simply calling "cargo" in your shell. Once you confirm that cargo is working, go to ~/tera_renderer and call this command:
+```
+cargo build --verbose --release
+```
+
+It should take around 4min on Rpi to compile. Then take the newly created t_renderer (in green bc it's executable) file in ~/tera_renderer/target/releaseand copy it into the ~/acados/bin folder.
+
+Now you can call
+```
+run python3 minimal example_ocp.py
+```
+
+And it should run perfectly.
+
+## Fix Deprecated Setuptools Warning
 When calling colon build in ROS2 you will often see it compile everything perfectly, but throw you a light warning regarding the [depracation regarding setuptools and your setup.cfg file](https://answers.ros.org/question/396439/setuptoolsdeprecationwarning-setuppy-install-is-deprecated-use-build-and-pip-and-other-standards-based-tools/)
 1. Make sure you have underscores ("_") in setup.cfg file for all of the packages you're calling colcon build on, and not hyphens ("-"). (Should already be like this but could be worth checking)
 2. Call this in bash shell according to [instructions](https://answers.ros.org/question/396439/setuptoolsdeprecationwarning-setuppy-install-is-deprecated-use-build-and-pip-and-other-standards-based-tools/)
@@ -104,7 +140,7 @@ When calling colon build in ROS2 you will often see it compile everything perfec
 pip install setuptools==58.2.0
 ```
 
-### Now you should be able to build everything with no errors!
+## Now you should be able to build everything with no errors!
 1. On a clean bash shell to ROS2 workspace with px4_msgs and px4_ros_com already compiled
 2. Make sure your packages are in the ros2ws/src/ folder ready to be built
 3. Make sure conda is NOT activated
@@ -115,6 +151,6 @@ colcon build --packages-select **PACKAGE_NAME** --symlink-install
 ```
 6. The **symlink-install** ensures that you can edit python files and not have to rebuild the package every time!
 
-### Possible Other Helpful Links
+## Other Possibly Helpful Links
 1. [PX4-ROS2 Interface Lib](https://docs.px4.io/main/en/ros2/px4_ros2_interface_lib.html)
 2. Fixing topics that don't work randomly after you've built a new px4_msgs and you don't know why it's [not working](https://discuss.px4.io/t/ros2-uxrce-agent-cant-subscribe-to-published-topics/35734/10)
