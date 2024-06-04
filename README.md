@@ -143,7 +143,7 @@ When calling colon build in ROS2 you will often see it compile everything perfec
 pip install setuptools==58.2.0
 ```
 
-## Now you should be able to build everything with no errors!
+### Now you should be able to build everything with no errors or warnings!
 1. On a clean bash shell to ROS2 workspace with px4_msgs and px4_ros_com already compiled
 2. Make sure your packages are in the ros2ws/src/ folder ready to be built
 3. Make sure conda is NOT activated
