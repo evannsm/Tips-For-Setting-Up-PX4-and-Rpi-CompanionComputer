@@ -82,6 +82,8 @@ pip install torchvision
 ```
 Should work now. Or maybe not. Just keep installing it every way possible until it works. Torch is weird like that with ROS2. It'll run on a ipynb, normal script, and even in the shell but not when running with "ros2 run ..."
 
+### Acados & AcadosPython Interface Installation Tips
+1. 
 
 ### Fix Deprecated Setuptools Warning
 When calling colon build in ROS2 you will often see it compile everything perfectly, but throw you a light warning regarding the [depracation regarding setuptools and your setup.cfg file](https://answers.ros.org/question/396439/setuptoolsdeprecationwarning-setuppy-install-is-deprecated-use-build-and-pip-and-other-standards-based-tools/)
