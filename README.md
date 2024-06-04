@@ -69,7 +69,10 @@ echo ". /home/<user>/miniconda3/etc/profile.d/conda.sh" >> ~/.bashrc
 conda config --set auto_activate_base false
 ```
 
-### Torch Installation Tips
+#### Torch Installation Tips
+If you need torch for running certain code you may try running a conda env and conda install torch on it and see that when you run conda activate and source install/setup.bash, and then do "ros2 run package script" it wont work!!!!! ROS2 won't see that you have torch installed no matter what. Torch is weird like that with ROS2. It'll run on a ipynb, normal script, and even in the shell but not when running with "ros2 run ..." 
+
+This hopefully will help fix this issue.
 For some reason pytorch has issues installing and then showing up when you run on the shell as opposed to running in a notebook on Vscode. [Best way to install torch](https://stackoverflow.com/questions/54843067/no-module-named-torch) (and also [numpy](https://numpy.org/install/) hehe) is to do:
 ```
 conda create -n **NAME**
@@ -79,7 +82,7 @@ conda install scipy
 conda deactivate
 pip install torchvision
 ```
-Should work now. Or maybe not. Just keep installing it every way possible until it works. Torch is weird like that with ROS2. It'll run on a ipynb, normal script, and even in the shell but not when running with "ros2 run ..."
+Should work now. Or maybe not. Just keep installing it every way possible until it works :P
 
 ## Acados & AcadosPython Interface Installation Tips
 This will probably be a pain in the ass. These tips should eliminate most if not all of that pain.
