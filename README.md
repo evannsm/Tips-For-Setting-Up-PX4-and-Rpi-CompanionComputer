@@ -70,6 +70,11 @@ export ROS_DOMAIN_ID=31 # To ensure domain matches what is on the Pixhawk board 
    8. Make sure the "Automatically Connect" setting is checked and then hit OK
    9. Go back and quit the nmtui interface
    10. Reboot with ```sudo reboot```
+  
+3. Now you can go to your main laptop and make sure you're on the same network and call ```ping RPI_IP_ADDRESS``` and it should return successful
+4. now try ```ssh rpi_device_name@RPI_IP_ADDRESS``` HA IT WONT WORK!
+5. Now go back to the Rpi and call ```sudo apt install openssh-server```
+6. NOW it should work when you call ```ssh rpi_device_name@RPI_IP_ADDRESS```
    
 ## Troubleshooting for Running Everything Smoothly with ROS and PX4
 
