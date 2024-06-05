@@ -13,8 +13,8 @@ Troubleshooting info to set up Ubuntu 22.04.4 LTS (Jammy Jellyfish) on Rasbperry
 7. **Warning**: Compiling px4_msgs takes _FOREVERRRRR_
 
 ## Compatibility Between Autopilot Software on the Pixhawk Board and Message Definitions on Rpi
-Ensure that px4_msgs and the PX4 autopilot versions you run are compatible and make sure their ROS_DOMAIN_ID are compatible
-
+Ensure that px4_msgs and the PX4 autopilot versions you run are compatible and make sure their ROS_DOMAIN_ID are compatible \
+The way that Pixhawk manage their versions was very unintuitive to me. I'm not sure if other major projects do it the same way. [From what I understand](https://discuss.px4.io/t/ros2-uxrce-agent-cant-subscribe-to-published-topics/35734/8), development happens on the main. This means that if you follow their [tutorials](https://docs.px4.io/main/en/) and simply git clone whatever repository you need, you may get a version of it that is not complete and not compatible with another piece of their code that they tell you to git clone. And when you look at their guide and select for which version you want (main, v1.14, v1.14, etc) it doesn't change which git clone you call, leaving you lost down the line when either nothing works, or specific important things refuse to work. This is why you MUST clone specific releases to avoid issues. This information would have saved me MONTHS as a 1st year PhD student, thinking I had simply made a mistake on my Ubuntu dual-boot that made it useless (trying to get PX4 working was the first thing I always did on a fresh Ubuntu install) and reinstalling Ubuntu and repartitioning my harddrive too many times to count.
 ### On the Pixhawk Board Autipilot Firmware Side
 1. On a _Desktop_ computer (you can't connect pixhawk board to laptop because not enough power goes through). As of June2024 the best stable version is release 1.14 for everything. So go to a bash shell as instructed (here)[https://docs.px4.io/main/en/dev_setup/dev_env_linux_ubuntu.html] and call
 ```
