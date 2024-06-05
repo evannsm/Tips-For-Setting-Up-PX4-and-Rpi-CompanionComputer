@@ -57,7 +57,7 @@ export ROS_DOMAIN_ID=31 # To ensure domain matches what is on the Pixhawk board 
 1. Open a bash shell and get the following pieces of information:
    1. Your Rpi's current IPv4 address: ```hostname -I``` -> yields something like **192.168.1.27**
    2. Your router's IP address AKA "Gateway": ```ip r | grep default``` -> yields something like **default via 192.168.1.1 dev wlan0 proto static metric 20600**
-   3. DNS Server: ```grep "nameserver" /etc/resolv/conf``` -> yields something like **nameserver 127.0.0.53**
+   3. DNS Server: ```grep "nameserver" /etc/resolv.conf``` -> yields something like **nameserver 127.0.0.53**
   
 2. Now that you have the necessary information:
    1. Call the following: ```sudo nmtui```
