@@ -12,7 +12,7 @@ Troubleshooting info to set up Ubuntu 22.04.4 LTS (Jammy Jellyfish) on Rasbperry
 6. Follow these [instructions](https://docs.px4.io/v1.14/en/ros/ros2_comm.html#build-ros-2-workspace) to set up a ROS2 workspace that contains PX4 message definitions as well as some example code for working with PX4 stack and run the [example](https://docs.px4.io/v1.14/en/ros/ros2_comm.html#running-the-example) to make sure it all works.
 7. **Warning**: Compiling px4_msgs takes _FOREVERRRRR_
 
-## Compatibility Tips Between Autopilot Software on the Pixhawk Board and Message Definitions
+## Compatibility Between Autopilot Software on the Pixhawk Board and Message Definitions on Rpi
 Ensure that px4_msgs and the PX4 autopilot versions you run are compatible and make sure their ROS_DOMAIN_ID are compatible
 
 ### On the Pixhawk Board Autipilot Firmware Side
@@ -53,7 +53,7 @@ This ensures that you have the compatible ros2 message definitions for the px4 f
 export ROS_DOMAIN_ID=31 # To ensure domain matches what is on the Pixhawk board and my computer
 ```
 
-## Setting up static IP address on Rpi
+## Setting Up Static IP Address on Rpi
 1. Open a bash shell and get the following pieces of information:
    1. Your Rpi's current IPv4 address: ```hostname -I``` -> yields something like **192.168.1.27**
    2. Your router's IP address AKA "Gateway": ```ip r | grep default``` -> yields something like **default via 192.168.1.1 dev wlan0 proto static metric 20600**
