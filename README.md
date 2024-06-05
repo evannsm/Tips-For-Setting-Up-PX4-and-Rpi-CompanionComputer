@@ -53,6 +53,23 @@ This ensures that you have the compatible ros2 message definitions for the px4 f
 export ROS_DOMAIN_ID=31 # To ensure domain matches what is on the Pixhawk board and my computer
 ```
 
+## Setting up static IP address on Rpi
+1. Open a bash shell and get the following pieces of information:
+   1. Your Rpi's current IPv4 address: ```hostname -I``` -> yields something like **192.168.1.27**
+   2. Your router's IP address AKA "Gateway": ```ip r | grep default``` -> yields something like **default via 192.168.1.1 dev wlan0 proto static metric 20600**
+   3. DNS Server: ```grep "nameserver" /etc/resolv/conf``` -> yields something like **nameserver 127.0.0.53**
+  
+2. Now that you have the necessary information:
+   1. Call the following: ```sudo nmtui```
+   2. Go to _Edit a connection_
+   3. Go to the GRITS_Downstairs option under Wi-Fi and hit enter
+   4. Change IPv4 Configuration to <Manual> under its dropdown menu
+   5. For Addresses put in your desired Rpi static IP address (you can make it the result under "hostname -I" to ensure it's not already taken but on this particular network you can choose your own value)
+   6. Under Gateway put in the router's IP address from "ip r | grep default"
+   7. Under DNS servers put in the result after **nameserver** from above
+   8. Make sure the "Automatically Connect" setting is checked and then hit OK
+   9. Go back and quit the nmtui interface
+   10. Reboot with ```sudo reboot```
    
 ## Troubleshooting for Running Everything Smoothly with ROS and PX4
 
