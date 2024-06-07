@@ -10,10 +10,10 @@ Troubleshooting info to set up Ubuntu 22.04.4 LTS (Jammy Jellyfish) on Rasbperry
 4. Install the MicroRTPS Agent to connect to topics from Pixhawk Board
 5. Set up wiring cables using these [instructions](https://docs.px4.io/v1.14/en/companion_computer/pixhawk_rpi.html#wiring)
 6. Follow these [instructions](https://docs.px4.io/v1.14/en/ros/ros2_comm.html#build-ros-2-workspace) to set up a ROS2 workspace that contains PX4 message definitions as well as some example code for working with PX4 stack and run the [example](https://docs.px4.io/v1.14/en/ros/ros2_comm.html#running-the-example) to make sure it all works.
-     i. But make sure you heed the warnings from the [section below]().
+     i. ***But make sure you heed the warnings from the section below on ensuring compatibility with these px4 message definitions***.
 8. **Warning**: Compiling px4_msgs takes _FOREVERRRRR_
 
-## Compatibility Between Autopilot Software on the Pixhawk Board and Message Definitions on Rpi
+## Ensuring Compatibility Between Autopilot Software on the Pixhawk Board and Message Definitions on Rpi
 In short, ensure that px4_msgs and the PX4 autopilot versions you run are compatible and make sure their ROS_DOMAIN_ID are compatible.
 
 The way that Pixhawk manage their versions was very unintuitive (at least to me), and I'm not sure if other major projects do it the same way.\
