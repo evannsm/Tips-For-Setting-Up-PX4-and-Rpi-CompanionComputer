@@ -23,7 +23,7 @@ As I understand [from here](https://discuss.px4.io/t/ros2-uxrce-agent-cant-subsc
 This is why you MUST clone specific releases to avoid issues. This information would have saved me MONTHS as a 1st year PhD student (I also didn't really understand git, much less github at the time :P), thinking I had simply made a mistake on my Ubuntu dual-boot that made it useless (trying to get PX4 working was the first thing I always did on a fresh Ubuntu install) and reinstalling Ubuntu and repartitioning my hard drive too many times to count.
 
 ### On the Pixhawk Board Autipilot Firmware Side
-1. On a _Desktop_ computer (you can't connect pixhawk board to laptop because not enough power goes through). As of June2024 the best stable version is release 1.14 for everything. So go to a bash shell as instructed (here)[https://docs.px4.io/main/en/dev_setup/dev_env_linux_ubuntu.html] and call
+1. On a _Desktop_ computer (you can't connect pixhawk board to laptop because not enough power goes through). As of June2024 the best stable version is release 1.14 for everything. So go to a bash shell as instructed [here](https://docs.px4.io/main/en/dev_setup/dev_env_linux_ubuntu.html) and call
 ```
 git clone -b release/1.14 https://github.com/PX4/PX4-Autopilot.git --recursive
 ```
@@ -31,12 +31,12 @@ git clone -b release/1.14 https://github.com/PX4/PX4-Autopilot.git --recursive
 bash ./PX4-Autopilot/Tools/setup/ubuntu.sh
 ```
 
-2. Then follow the instructions (here) [https://docs.px4.io/main/en/dev_setup/building_px4.html] to build the firmware. It will be in the ~/PX4-Autopilot/build folder of your computer after it's done building. (I'm using a Pixhawk 6x board, so this command below will change depending on specific board)
+2. Then follow the instructions [here](https://docs.px4.io/main/en/dev_setup/building_px4.html) to build the firmware. It will be in the ~/PX4-Autopilot/build folder of your computer after it's done building. (I'm using a Pixhawk 6x board, so this command below will change depending on specific board)
 ```
 make px4_fmu-v6x_default
 ```
 
-3. Then you can load it onto the Pixhawk board using the instructions (here)[https://docs.px4.io/main/en/config/firmware.html#installing-px4-main-beta-or-custom-firmware]. Basically open QGroundControl (QGC) on a desktop, click on the Q in the top left, then click Vehicle Setup, then firmware, then connect the Pixhawk board, and then do a custom flash where you'll upload the .px4 file in the ~/PX4-Autopilot/build/px4_fmu-v6x_default folder of your computer)
+3. Then you can load it onto the Pixhawk board using the instructions [here](https://docs.px4.io/main/en/config/firmware.html#installing-px4-main-beta-or-custom-firmware). Basically open QGroundControl (QGC) on a desktop, click on the Q in the top left, then click Vehicle Setup, then firmware, then connect the Pixhawk board, and then do a custom flash where you'll upload the .px4 file in the ~/PX4-Autopilot/build/px4_fmu-v6x_default folder of your computer)
 
 4. You can then go to the parameters section of QGC and do an upload of the **evannsdoneparams.params** file in this repository to borrow all of my parameters that set up this board specifically for a Holybro x500v2's dimensions, size, motors, etc. It also set up the radio input to interpret each channel on my transmitter how I like it (offboard switch, kill switch, land switch, throttle, angles, etc). Moreover (and probably most importantly) it sets up uxrce_dds to work with ROS2 via the Telem2 port according to the instructions shown above. **It specifically sets the ROS_DOMAIN_ID to be 31 to match what I have on my computer and what I will set up on my Rpi**
 
