@@ -88,7 +88,7 @@ export ROS_DOMAIN_ID=31 # To ensure domain matches what is on the Pixhawk board 
 ### Conda Instructions
 You're going to want to use Conda to keep your dependencies in order.
 Specifically, use conda-forge's **miniforge** version of conda, as it emphasises supporting various CPU architectures like _aarch64_ which is what the Raspberry Pi 4 Model B uses (you can check your CPU architecture using the "uname -m" command in bash shell). Normal conda/miniconda doesn't seem to be compatible with Rpi in general (to the best of my knowledge). [Conda-forge](https://conda-forge.org/docs/) is community-driven and separate from Anaconda, INC.
-1. Install miniforge from the instructions (here)[https://github.com/conda-forge/miniforge?tab=readme-ov-file#install] (I like the curl instructions).
+1. Install miniforge from the instructions [here](https://github.com/conda-forge/miniforge?tab=readme-ov-file#install) (I like the curl instructions).
 2. Once Conda is installed, you can make sure conda commands are [recognized by bash shell using this](https://askubuntu.com/questions/849470/how-do-i-activate-a-conda-environment-in-my-bashrc)
 ```
 echo ". /home/<user>/miniconda3/etc/profile.d/conda.sh" >> ~/.bashrc
