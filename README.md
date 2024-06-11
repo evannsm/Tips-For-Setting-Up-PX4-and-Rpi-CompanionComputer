@@ -31,12 +31,12 @@ git clone -b release/1.14 https://github.com/PX4/PX4-Autopilot.git --recursive
 bash ./PX4-Autopilot/Tools/setup/ubuntu.sh
 ```
 
-2. Then follow the instructions [here] (https://docs.px4.io/main/en/dev_setup/building_px4.html) to build the firmware. It will be in the ~/PX4-Autopilot/build folder of your computer after it's done building. (I'm using a Pixhawk 6x board, so this command below will change depending on specific board)
+2. Then follow the instructions (here) [https://docs.px4.io/main/en/dev_setup/building_px4.html] to build the firmware. It will be in the ~/PX4-Autopilot/build folder of your computer after it's done building. (I'm using a Pixhawk 6x board, so this command below will change depending on specific board)
 ```
 make px4_fmu-v6x_default
 ```
 
-3. Then you can load it onto the Pixhawk board using the instructions [here](https://docs.px4.io/main/en/config/firmware.html#installing-px4-main-beta-or-custom-firmware). Basically open QGroundControl (QGC) on a desktop, click on the Q in the top left, then click Vehicle Setup, then firmware, then connect the Pixhawk board, and then do a custom flash where you'll upload the .px4 file in the ~/PX4-Autopilot/build/px4_fmu-v6x_default folder of your computer)
+3. Then you can load it onto the Pixhawk board using the instructions (here)[https://docs.px4.io/main/en/config/firmware.html#installing-px4-main-beta-or-custom-firmware]. Basically open QGroundControl (QGC) on a desktop, click on the Q in the top left, then click Vehicle Setup, then firmware, then connect the Pixhawk board, and then do a custom flash where you'll upload the .px4 file in the ~/PX4-Autopilot/build/px4_fmu-v6x_default folder of your computer)
 
 4. You can then go to the parameters section of QGC and do an upload of the **evannsdoneparams.params** file in this repository to borrow all of my parameters that set up this board specifically for a Holybro x500v2's dimensions, size, motors, etc. It also set up the radio input to interpret each channel on my transmitter how I like it (offboard switch, kill switch, land switch, throttle, angles, etc). Moreover (and probably most importantly) it sets up uxrce_dds to work with ROS2 via the Telem2 port according to the instructions shown above. **It specifically sets the ROS_DOMAIN_ID to be 31 to match what I have on my computer and what I will set up on my Rpi**
 
@@ -88,7 +88,7 @@ export ROS_DOMAIN_ID=31 # To ensure domain matches what is on the Pixhawk board 
 ### Conda Instructions
 You're going to want to use Conda to keep your dependencies in order.
 Specifically, use conda-forge's **miniforge** version of conda, as it emphasises supporting various CPU architectures like _aarch64_ which is what the Raspberry Pi 4 Model B uses (you can check your CPU architecture using the "uname -m" command in bash shell). Normal conda/miniconda doesn't seem to be compatible with Rpi in general (to the best of my knowledge). [Conda-forge](https://conda-forge.org/docs/) is community-driven and separate from Anaconda, INC.
-1. Install miniforge from the instructions [here](https://github.com/conda-forge/miniforge?tab=readme-ov-file#install) (I like the curl instructions).
+1. Install miniforge from the instructions (here)[https://github.com/conda-forge/miniforge?tab=readme-ov-file#install] (I like the curl instructions).
 2. Once Conda is installed, you can make sure conda commands are [recognized by bash shell using this](https://askubuntu.com/questions/849470/how-do-i-activate-a-conda-environment-in-my-bashrc)
 ```
 echo ". /home/<user>/miniconda3/etc/profile.d/conda.sh" >> ~/.bashrc
