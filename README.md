@@ -3,6 +3,10 @@
 # 2024 Version
 Setup instructions and troubleshooting info to set up Ubuntu 22.04.4 LTS (Jammy Jellyfish) on Rasbperry Pi for ROS2 (Humble) and ensure it works with PX4 stack via Telem2 Port on Pixhawk 6X Board.
 
+# TODO:
+1. Instructions/Troubleshooting guide for configuring radio transmitter and receiver with matching firmware and pairing them
+2. Instructions for setting the pixhawk paramters on your own to recreate the .params file in this repo
+
 ## Overview of the Setup
 0. Set up the pixhawk board for communication with these [instructions](https://docs.px4.io/v1.14/en/companion_computer/pixhawk_rpi.html#ros-2-and-uxrce-dds) (I will make a separate instruciton file to set up the pixhawk board properly for the Holybro X500 V2 using proper QGroundCOntrol Version, flight settings, and Radio Setup)
 1. If using Rpi, install Ubuntu on it following these instructions [instructions](https://docs.px4.io/v1.14/en/companion_computer/pixhawk_rpi.html#ubuntu-setup-on-rpi) and [these](https://ubuntu.com/tutorials/how-to-install-ubuntu-desktop-on-raspberry-pi-4#1-overview)
@@ -10,7 +14,7 @@ Setup instructions and troubleshooting info to set up Ubuntu 22.04.4 LTS (Jammy 
 4. Install ROS2 and MicroRTPS Agent on Rpi to connect to topics from Pixhawk Board using [these](https://docs.px4.io/main/en/companion_computer/pixhawk_rpi.html#ros-setup-on-rpi) instructions
 5. Set up wiring cables using these [instructions](https://docs.px4.io/v1.14/en/companion_computer/pixhawk_rpi.html#wiring)
 6. Follow these [instructions](https://docs.px4.io/v1.14/en/ros/ros2_comm.html#build-ros-2-workspace) to set up a ROS2 workspace that contains PX4 message definitions as well as some example code for working with PX4 stack and run the [example](https://docs.px4.io/v1.14/en/ros/ros2_comm.html#running-the-example) to make sure it all works.
-     i. ***But make sure you heed the warnings from the section below on ensuring compatibility with these px4 message definitions and the version of the autopilot running on your pixhawk board***.
+     i. ***But make sure you heed the warnings from the section right below on ensuring compatibility with these px4 message definitions and the version of the autopilot running on your pixhawk board***.
 8. **Warning**: Compiling px4_msgs takes _FOREVERRRRR_
 
 ## Ensuring Compatibility Between Autopilot Software on the Pixhawk Board and Message Definitions on Rpi
@@ -24,7 +28,7 @@ This is why you MUST clone specific releases to avoid issues. This information w
 ### On the Pixhawk Board Autipilot Firmware Side
 1. On a _Desktop_ computer (you can't connect pixhawk board to laptop because not enough power goes through). As of June2024 the best stable version is release 1.14 for everything. So go to a bash shell as instructed [here](https://docs.px4.io/main/en/dev_setup/dev_env_linux_ubuntu.html#simulation-and-nuttx-pixhawk-targets) and call
 ```
-git clone -b release/1.14 https://github.com/PX4/PX4-Autopilot.git --recursive 
+git clone -b release/1.14 https://githuPreliminaryb.com/PX4/PX4-Autopilot.git --recursive 
 ```
 ```
 bash ./PX4-Autopilot/Tools/setup/ubuntu.sh #just a shell script that installs dependencies for px4/gazebo/jmavsim/etc
