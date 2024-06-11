@@ -5,10 +5,9 @@ Setup instructions and troubleshooting info to set up Ubuntu 22.04.4 LTS (Jammy 
 
 ## Preliminary Setup
 0. Set up the pixhawk board for communication with these [instructions](https://docs.px4.io/v1.14/en/companion_computer/pixhawk_rpi.html#ros-2-and-uxrce-dds) (I will make a separate instruciton file to set up the pixhawk board properly for the Holybro X500 V2 using proper QGroundCOntrol Version, flight settings, and Radio Setup)
-1. If using Rpi, install Ubuntu on it using these [instructions](https://docs.px4.io/v1.14/en/companion_computer/pixhawk_rpi.html#ubuntu-setup-on-rpi).
-2. Then get it prepared for connection to Pixhawk Board [here](https://ubuntu.com/tutorials/how-to-install-ubuntu-desktop-on-raspberry-pi-4#1-overview)
+1. If using Rpi, install Ubuntu on it following these instructions [instructions](https://docs.px4.io/v1.14/en/companion_computer/pixhawk_rpi.html#ubuntu-setup-on-rpi) and [these](https://ubuntu.com/tutorials/how-to-install-ubuntu-desktop-on-raspberry-pi-4#1-overview)
 3. Install [ROS2 Humble](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html)
-4. Install the MicroRTPS Agent to connect to topics from Pixhawk Board
+4. Install ROS2 and MicroRTPS Agent on Rpi to connect to topics from Pixhawk Board using [these](https://docs.px4.io/main/en/companion_computer/pixhawk_rpi.html#ros-setup-on-rpi) instructions
 5. Set up wiring cables using these [instructions](https://docs.px4.io/v1.14/en/companion_computer/pixhawk_rpi.html#wiring)
 6. Follow these [instructions](https://docs.px4.io/v1.14/en/ros/ros2_comm.html#build-ros-2-workspace) to set up a ROS2 workspace that contains PX4 message definitions as well as some example code for working with PX4 stack and run the [example](https://docs.px4.io/v1.14/en/ros/ros2_comm.html#running-the-example) to make sure it all works.
      i. ***But make sure you heed the warnings from the section below on ensuring compatibility with these px4 message definitions and the version of the autopilot running on your pixhawk board***.
