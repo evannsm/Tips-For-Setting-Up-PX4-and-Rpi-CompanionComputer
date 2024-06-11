@@ -5,7 +5,7 @@ Setup instructions and troubleshooting info to set up Ubuntu 22.04.4 LTS (Jammy 
 
 # TODO:
 1. Instructions/Troubleshooting guide for configuring radio transmitter and receiver with matching firmware and pairing them
-2. Instructions for setting the pixhawk paramters on your own to recreate the .params file in this repo
+2. Instructions/Troubleshooting for setting the pixhawk paramters on your own to recreate the .params file in this repo
 
 ## Overview of the Setup
 0. Set up the pixhawk board for communication with these [instructions](https://docs.px4.io/v1.14/en/companion_computer/pixhawk_rpi.html#ros-2-and-uxrce-dds) (I will make a separate instruciton file to set up the pixhawk board properly for the Holybro X500 V2 using proper QGroundCOntrol Version, flight settings, and Radio Setup)
