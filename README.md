@@ -39,6 +39,8 @@ Go to ~/PX4-Autopilot/src/modules/uxrce_dds_client/dds_topics.yaml and under the
 ```
 You can see specifically from [this](https://discuss.px4.io/t/one-ros-topic-disapear/32041/6) response to [this](https://discuss.px4.io/t/one-ros-topic-disapear/32041/6) question, that this topic won't actually appear until and unless the board receives rc_channel inputs from the receiver connected to it because the DDS bridge between uOrb and ROS2 won't generate them if they're unnecessary.
 
+This [page](https://docs.px4.io/main/en/middleware/uxrce_dds.html) of the documentation is very helpful in understanding all of this, especially [this](https://docs.px4.io/main/en/middleware/uxrce_dds.html#supported-uorb-messages) section and [this](https://docs.px4.io/main/en/middleware/uxrce_dds.html#dds-topics-yaml) section
+
 2. Then follow the instructions [here](https://docs.px4.io/main/en/dev_setup/building_px4.html) and specificallly [here](https://docs.px4.io/main/en/dev_setup/building_px4.html#nuttx-pixhawk-based-boards) to build the firmware. It will be in the ~/PX4-Autopilot/build folder of your computer after it's done building. (I'm using a Pixhawk 6x board, so this command below will change depending on specific board)
 ```
 make px4_fmu-v6x_default
