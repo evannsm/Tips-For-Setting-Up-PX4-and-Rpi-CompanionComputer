@@ -31,10 +31,18 @@ git clone -b release/1.14 https://github.com/PX4/PX4-Autopilot.git --recursive
 bash ./PX4-Autopilot/Tools/setup/ubuntu.sh
 ```
 
-2. Then follow the instructions [here](https://docs.px4.io/main/en/dev_setup/building_px4.html) to build the firmware. It will be in the ~/PX4-Autopilot/build folder of your computer after it's done building. (I'm using a Pixhawk 6x board, so this command below will change depending on specific board)
+1a. **This step is crucial if you intend to connect a radio transmitter to a receiver antenna onboard the drone connected to the pixhawk board to arm/disarm/set to offboard mode/etc**
+Go to ~/PX4-Autopilot/src/modules/uxrce_dds_client/dds_topics.yaml and under the very last topic under the Publications umbrella (before it says "subscriptions:", add the following line:
+```
+  - topic: /fmu/out/rc_channels
+    type: px4_msgs::msg::RcChannels
+```
+
+2. Then follow the instructions [here](https://docs.px4.io/main/en/dev_setup/building_px4.html) and specificallly [here](https://docs.px4.io/main/en/dev_setup/building_px4.html#nuttx-pixhawk-based-boards) to build the firmware. It will be in the ~/PX4-Autopilot/build folder of your computer after it's done building. (I'm using a Pixhawk 6x board, so this command below will change depending on specific board)
 ```
 make px4_fmu-v6x_default
 ```
+
 
 3. Then you can load it onto the Pixhawk board using the instructions [here](https://docs.px4.io/main/en/config/firmware.html#installing-px4-main-beta-or-custom-firmware). Basically open QGroundControl (QGC) on a desktop, click on the Q in the top left, then click Vehicle Setup, then firmware, then connect the Pixhawk board, and then do a custom flash where you'll upload the .px4 file in the ~/PX4-Autopilot/build/px4_fmu-v6x_default folder of your computer)
 
