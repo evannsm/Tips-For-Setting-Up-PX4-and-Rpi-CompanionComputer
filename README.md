@@ -23,7 +23,7 @@ As I understand [from here](https://discuss.px4.io/t/ros2-uxrce-agent-cant-subsc
 This is why you MUST clone specific releases to avoid issues. This information would have saved me MONTHS as a 1st year PhD student (I also didn't really understand git, much less github at the time :P), thinking I had simply made a mistake on my Ubuntu dual-boot that made it useless (trying to get PX4 working was the first thing I always did on a fresh Ubuntu install) and reinstalling Ubuntu and repartitioning my hard drive too many times to count.
 
 ### On the Pixhawk Board Autipilot Firmware Side
-1. On a _Desktop_ computer (you can't connect pixhawk board to laptop because not enough power goes through). As of June2024 the best stable version is release 1.14 for everything. So go to a bash shell as instructed [here](https://docs.px4.io/main/en/dev_setup/dev_env_linux_ubuntu.html) and call
+1. On a _Desktop_ computer (you can't connect pixhawk board to laptop because not enough power goes through). As of June2024 the best stable version is release 1.14 for everything. So go to a bash shell as instructed [here](https://docs.px4.io/main/en/dev_setup/dev_env_linux_ubuntu.html#simulation-and-nuttx-pixhawk-targets) and call
 ```
 git clone -b release/1.14 https://github.com/PX4/PX4-Autopilot.git --recursive
 ```
