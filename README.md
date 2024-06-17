@@ -28,7 +28,7 @@ This is why you MUST clone specific releases to avoid issues. This information w
 ### On the Pixhawk Board Autipilot Firmware Side
 1. On a _Desktop_ computer (you can't connect pixhawk board to laptop because not enough power goes through). As of June2024 the best stable version is release 1.14 for everything. So go to a bash shell as instructed [here](https://docs.px4.io/main/en/dev_setup/dev_env_linux_ubuntu.html#simulation-and-nuttx-pixhawk-targets) and call
 ```
-git clone -b release/1.14 https://githuPreliminaryb.com/PX4/PX4-Autopilot.git --recursive 
+git clone -b release/1.14 https://github.com/PX4/PX4-Autopilot.git --recursive 
 ```
 ```
 bash ./PX4-Autopilot/Tools/setup/ubuntu.sh #just a shell script that installs dependencies for px4/gazebo/jmavsim/etc
