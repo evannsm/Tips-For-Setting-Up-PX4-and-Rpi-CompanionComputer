@@ -30,6 +30,7 @@ This is why you MUST clone specific releases to avoid issues. This information w
 ```
 git clone -b release/1.14 https://github.com/PX4/PX4-Autopilot.git --recursive 
 ```
+(note: this takes quite a bit)
 ```
 bash ./PX4-Autopilot/Tools/setup/ubuntu.sh #just a shell script that installs dependencies for px4/gazebo/jmavsim/etc
 ```
