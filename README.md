@@ -49,7 +49,7 @@ This [page](https://docs.px4.io/main/en/middleware/uxrce_dds.html) of the docume
 
 2. Then follow the instructions [here](https://docs.px4.io/main/en/dev_setup/building_px4.html) and specificallly [here](https://docs.px4.io/main/en/dev_setup/building_px4.html#nuttx-pixhawk-based-boards) to build the firmware. It will be in the ~/PX4-Autopilot/build folder of your computer after it's done building. (I'm using a Pixhawk 6x board, so this command below will change depending on specific board)
 ```
-cd ~/PX4_Autopilot
+cd ~/PX4-Autopilot
 make px4_fmu-v6x_default
 ```
 
