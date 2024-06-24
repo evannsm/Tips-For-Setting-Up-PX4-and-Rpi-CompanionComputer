@@ -1,4 +1,4 @@
-# Setting Up Ubuntu-Rpi Properly
+# Setting Up PX4 with Ubuntu-Rpi Companion Computer Properly
 
 # 2024 Version
 Setup instructions and troubleshooting info to set up Ubuntu 22.04.4 LTS (Jammy Jellyfish) on Rasbperry Pi for ROS2 (Humble) and ensure it works with PX4 stack via Telem2 Port on Pixhawk 6X Board.
