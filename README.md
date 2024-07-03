@@ -200,7 +200,9 @@ pip install setuptools==58.2.0
 colcon build --packages-select **PACKAGE_NAME** --symlink-install
 ```
 6. The **symlink-install** ensures that you can edit python files and not have to rebuild the package every time!
-
+7. 
+# Help fully deleting ROS2 from your sysem:
+1. https://answers.ros.org/question/57213/how-i-completely-remove-all-ros-from-my-system/
 ## Other Possibly Helpful Links
 1. [PX4-ROS2 Interface Lib](https://docs.px4.io/main/en/ros2/px4_ros2_interface_lib.html)
 2. Fixing topics that don't work randomly after you've built a new px4_msgs and you don't know why it's [not working](https://discuss.px4.io/t/ros2-uxrce-agent-cant-subscribe-to-published-topics/35734/10)
