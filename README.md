@@ -131,6 +131,20 @@ pip install torchvision
 ```
 Should work now. Or maybe not. Just keep installing it every way possible until it works :P
 
+#### Making sure numpy and scikit are compatible:
+1. Do [this](https://stackoverflow.com/questions/40845304/runtimewarning-numpy-dtype-size-changed-may-indicate-binary-incompatibility):
+```
+pip3 uninstall -y numpy scipy pandas scikit-learn
+sudo apt update
+sudo apt install python3-numpy python3-scipy python3-pandas python3-sklearn
+```
+
+#### Get tf-transforms:
+1. Do [this](https://answers.ros.org/question/384871/how-do-you-install-tf_transformations/):
+```
+ros-galactic-tf-transformations
+```
+
 ## Acados & AcadosPython Interface Installation Tips
 This will probably be a pain in the ass. These tips should eliminate most if not all of that pain.
 
