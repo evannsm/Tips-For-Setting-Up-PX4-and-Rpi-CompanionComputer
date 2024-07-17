@@ -187,7 +187,7 @@ In your .bashrc you want to add:
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"/home/*USERNAME*/acados/lib"
 export ACADOS_SOURCE_DIR="/home/*USERNAME*/acados/"
 ```
-Don't do something like "~/acados/lib". IT WILL NOT WORK. I wasted a week trying to figure out what I had done wrong initially :) when I made this mistake.
+Don't do something like "~/acados/lib". IT WILL NOT WORK. I wasted a week trying to figure out what I had done wrong initially when I made this mistake :).
 
 Straight up just go to your ~/acados/ folder and enter "pwd" command and copy and paste it into where it says "<acados_root>" in step 4 of the python interface installation instructions. Badabim badaboom.
 
