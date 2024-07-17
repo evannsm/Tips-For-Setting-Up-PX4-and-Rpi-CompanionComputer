@@ -51,6 +51,12 @@ Go to ~/PX4-Autopilot/src/modules/uxrce_dds_client/dds_topics.yaml and under the
   - topic: /fmu/out/rc_channels
     type: px4_msgs::msg::RcChannels
 ```
+
+It's also nice to get battery information by doing this:
+```
+  - topic: /fmu/out/rc_channels
+    type: px4_msgs::msg::RcChannels
+```
 What this does is allow the bridge between uOrb and ROS2 to gain access to the uOrb rc channel topic and message definitions so that they can be used in ROS2. It is not included by default, so you must add this information for the bridge on your own so it connects to the pre-existing uOrb topic/msg definitions.
 
 You can see specifically from [this](https://discuss.px4.io/t/one-ros-topic-disapear/32041/6) response to [this](https://discuss.px4.io/t/one-ros-topic-disapear/32041/6) question, that this topic won't actually appear until and unless the board receives rc_channel inputs from the receiver connected to it because the DDS bridge between uOrb and ROS2 won't generate them if they're unnecessary.
