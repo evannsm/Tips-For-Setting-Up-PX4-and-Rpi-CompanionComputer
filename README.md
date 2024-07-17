@@ -54,8 +54,8 @@ Go to ~/PX4-Autopilot/src/modules/uxrce_dds_client/dds_topics.yaml and under the
 
 It's also nice to get battery information by doing this:
 ```
-  - topic: /fmu/out/rc_channels
-    type: px4_msgs::msg::RcChannels
+  - topic: /fmu/out/battery_status
+    type: px4_msgs::msg::BatteryStatus
 ```
 What this does is allow the bridge between uOrb and ROS2 to gain access to the uOrb rc channel topic and message definitions so that they can be used in ROS2. It is not included by default, so you must add this information for the bridge on your own so it connects to the pre-existing uOrb topic/msg definitions.
 
