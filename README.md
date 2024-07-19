@@ -172,7 +172,7 @@ It will appear in whatever folder you're in
 conda env create -f environment.yml
 ```
 
-#### Torch Installation Tips
+### Torch Installation Tips
 If you need torch for running certain code you may try running a conda env and conda install torch on it and see that when you run conda activate and source install/setup.bash, and then do "ros2 run package script" it wont work!!!!! ROS2 won't see that you have torch installed no matter what. Torch is weird like that with ROS2. It'll run on a ipynb, normal script, and even in the shell but not when running with "ros2 run ..." 
 
 This hopefully will help fix this issue.
@@ -187,7 +187,7 @@ pip install torchvision
 ```
 Should work now. Or maybe not. Just keep installing it every way possible until it works :P
 
-#### Making sure numpy and scikit are compatible:
+### Making sure numpy and scikit are compatible:
 1. Do [this](https://stackoverflow.com/questions/40845304/runtimewarning-numpy-dtype-size-changed-may-indicate-binary-incompatibility):
 ```
 pip3 uninstall -y numpy scipy pandas scikit-learn
@@ -195,7 +195,7 @@ sudo apt update
 sudo apt install python3-numpy python3-scipy python3-pandas python3-sklearn
 ```
 
-#### Get tf-transforms:
+### Get tf-transforms:
 1. Do [this](https://answers.ros.org/question/384871/how-do-you-install-tf_transformations/):
 ```
 ros-galactic-tf-transformations
