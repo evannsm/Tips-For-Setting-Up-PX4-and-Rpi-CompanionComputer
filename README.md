@@ -337,7 +337,7 @@ colcon build --packages-select **PACKAGE_NAME** --symlink-install
 6. The **symlink-install** ensures that you can edit python files and not have to rebuild the package every time!
 
    
-###  Getting Gazebo Working on a New Desktop/Laptop (esp Ubuntu 22.04+)
+##  Getting Gazebo Working on a New Desktop/Laptop (esp Ubuntu 22.04+)
 #### If you get the error: "ninja: error: unknown target 'gazebo-classic'"
 ```
 sudo apt remove gz-garden
