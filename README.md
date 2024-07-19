@@ -367,8 +367,10 @@ while gz model --verbose --spawn-file="${modelpath}/${model}/${model_name}.sdf" 
 ```
 Here you can update "-x 1.01 -y 0.98 -z 0.83" to:
 ```
--x 0.0 -y 0.0 -z 0.0
+-x 0.0 -y 0.0 -z 0.0 -Y 1.5709
 ```
+This will ensure it spawns at the origin and with a yaw angle of 0.0 when it faces +X(North) and a yaw of pi/2 when it faces +Y(East). The same way as in Ubuntu 20.04 and how it's set up in the coordinate frame of mocap in the hardware lab.
+
 2. Make the default world much prettier/closer to wireframe view
 
 ```
