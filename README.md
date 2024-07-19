@@ -374,7 +374,7 @@ This will ensure it spawns at the origin and with a yaw angle of 0.0 when it fac
 2. Make the default world much prettier/closer to wireframe view
 
 ```
-cd /home/evannsm/PX4-Autopilot/Tools/simulation/gazebo-classic/sitl_gazebo-classic/worlds/empty.world
+cd /home/evannsm/PX4-Autopilot/Tools/simulation/gazebo-classic/sitl_gazebo-classic/worlds
 ```
 Open empty.world in VSCode. Go to the about lines 12-14 and comment them out/delete them. These lines:
 ```
@@ -382,7 +382,15 @@ Open empty.world in VSCode. Go to the about lines 12-14 and comment them out/del
       <uri>model://asphalt_plane</uri>
     </include> -->
 ```
-
+This gets rid of the ugly/visually distracting asphalt floor in 22.04 that doesn't render as bad on 20.04. Then you can make the ground plane lighter like the Wireframe view by going to:
+```
+/home/evannsm/PX4-Autopilot/Tools/simulation/gazebo-classic/sitl_gazebo-classic/models/ground_plane
+```
+Open up "model.sdf" and around line 36 it should say:
+```
+            <name>Gazebo/Grey</name>
+```
+And you can change /Grey to /White and it'll look more like the nice Wireframe view without swithing to it manually.
 # Help fully deleting ROS2 from your sysem:
 1. https://answers.ros.org/question/57213/how-i-completely-remove-all-ros-from-my-system/
 2. Don't forget to delete ros folders @  /etc/ros/
