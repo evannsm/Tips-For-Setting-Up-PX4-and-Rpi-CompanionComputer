@@ -337,14 +337,14 @@ colcon build --packages-select **PACKAGE_NAME** --symlink-install
 6. The **symlink-install** ensures that you can edit python files and not have to rebuild the package every time!
 
    
-##  Getting Gazebo Working on a New Desktop/Laptop (esp Ubuntu 22.04+)
-#### If you get the error: "ninja: error: unknown target 'gazebo-classic'"
+#  Getting Gazebo Working on a New Desktop/Laptop (esp Ubuntu 22.04+)
+## If you get the error: "ninja: error: unknown target 'gazebo-classic'"
 ```
 sudo apt remove gz-garden
 sudo apt install aptitude
 sudo aptitude install gazebo libgazebo11 libgazebo-dev
 ```
-#### Adding macros to make running iris quad sim and microRTPS easier:
+## Adding macros to make running iris quad sim and microRTPS easier:
 Go to your ~/.bashrc and add the following two lines:
 1. Desktop/Laptop-
 ```
@@ -352,7 +352,7 @@ alias udp='MicroXRCEAgent udp4 -p 8888'
 alias iris='cd ~/PX4-Autopilot/ && make px4_sitl gazebo-classic'
 ```
 
-#### Making Gazebo Better (especially on ubuntu 22.04 w/ ros2 galactic)
+## Making Gazebo Better (especially on ubuntu 22.04 w/ ros2 galactic)
 1. Fix Spawn Point to Be (0,0,0) like [here](https://discuss.px4.io/t/align-px4-local-position-and-gazebo-classic-reference-frame/34038/2)
 ```
 cd /home/evannsm/PX4-Autopilot/Tools/simulation/gazebo-classic
@@ -381,10 +381,10 @@ Open empty.world in VSCode. Go to the about lines 12-14 and comment them out/del
     </include> -->
 ```
 
-## Help fully deleting ROS2 from your sysem:
+# Help fully deleting ROS2 from your sysem:
 1. https://answers.ros.org/question/57213/how-i-completely-remove-all-ros-from-my-system/
 2. Don't forget to delete ros folders @  /etc/ros/
 
-## Other Possibly Helpful Links
+# Other Possibly Helpful Links
 1. [PX4-ROS2 Interface Lib](https://docs.px4.io/main/en/ros2/px4_ros2_interface_lib.html)
 2. Fixing topics that don't work randomly after you've built a new px4_msgs and you don't know why it's [not working](https://discuss.px4.io/t/ros2-uxrce-agent-cant-subscribe-to-published-topics/35734/10)
