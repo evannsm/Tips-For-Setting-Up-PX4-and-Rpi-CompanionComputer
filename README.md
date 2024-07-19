@@ -329,6 +329,7 @@ colcon build --packages-select **PACKAGE_NAME** --symlink-install
 6. The **symlink-install** ensures that you can edit python files and not have to rebuild the package every time!
 ## Getting Simulation Working on a New Computer (esp Ubuntu 22.04+)
 
+## Gazebo Simulation Tips On Laptop
 ### If you get the error: "ninja: error: unknown target 'gazebo-classic'"
 ```
 sudo apt remove gz-garden
@@ -350,7 +351,23 @@ alias dronepi='sshpass -p "<PASSWORD>" ssh -t <RPI_NAME>@192.168.X.XXX' #require
 ```
 alias udp='sudo MicroXRCEAgent serial --dev /dev/serial0 -b 921600'
 ```
-
+### Making Gazebo Better (especially on ubuntu 22.04 w/ ros2 galactic)
+1. Fix Spawn Point to Be (0,0,0) like [here](https://discuss.px4.io/t/align-px4-local-position-and-gazebo-classic-reference-frame/34038/2)
+```
+cd /home/evannsm/PX4-Autopilot/Tools/simulation/gazebo-classic
+code .
+```
+Open sitl_run.sh in VSCode. Call "ctrl-G" and go to line 130. Where it should say:
+```
+while gz model --verbose --spawn-file="${modelpath}/${model}/${model_name}.sdf" --model-name=${model} -x 1.01 -y 0.98 -z 0.83 2>&1 | grep -q "An instance of Gazebo is not running."; do
+		echo "gzserver not ready yet, trying again!"
+		sleep 1
+	done
+```
+Here you can update "-x 1.01 -y 0.98 -z 0.83" to:
+```
+-x 0.0 -y 0.0 -z 0.0
+```
 
 ## Help fully deleting ROS2 from your sysem:
 1. https://answers.ros.org/question/57213/how-i-completely-remove-all-ros-from-my-system/
