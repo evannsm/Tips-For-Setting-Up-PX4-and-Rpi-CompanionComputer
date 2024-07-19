@@ -254,7 +254,8 @@ sudo apt install python3-numpy python3-scipy python3-pandas python3-sklearn
 ### Get tf-transforms:
 1. Do [this](https://answers.ros.org/question/384871/how-do-you-install-tf_transformations/):
 ```
-ros-galactic-tf-transformations
+sudo pip3 install transforms3d
+sudo apt install ros-<DISTRO>-tf-transformations
 ```
 
 ## Acados & AcadosPython Interface Installation Tips
