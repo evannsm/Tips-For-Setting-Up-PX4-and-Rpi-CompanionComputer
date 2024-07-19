@@ -3,10 +3,11 @@
 # 2024 Version
 Setup instructions and troubleshooting info to set up Ubuntu 22.04.4 LTS (Jammy Jellyfish) on Rasbperry Pi for ROS2 (Humble) and ensure it works with PX4 stack [v1.14.1](https://github.com/PX4/PX4-Autopilot/tags) via Telem2 Port on Pixhawk 6X Board.
 
-# TODO:
+## TODO:
 1. Instructions/Troubleshooting guide for configuring radio transmitter and receiver with matching firmware and pairing them
 2. Instructions/Troubleshooting for setting the pixhawk paramters on your own to recreate the .params file in this repo
 
+# Setting Up Hardware: Flight Controller and Raspberry Pi Instructions
 ## Overview of the Setup
 0. Set up the pixhawk board for communication with these [instructions](https://docs.px4.io/v1.14/en/companion_computer/pixhawk_rpi.html#ros-2-and-uxrce-dds) (I will make a separate instruciton file to set up the pixhawk board properly for the Holybro X500 V2 using proper QGroundCOntrol Version, flight settings, and Radio Setup)
 1. If using Rpi, install Ubuntu on it following these instructions [instructions](https://docs.px4.io/v1.14/en/companion_computer/pixhawk_rpi.html#ubuntu-setup-on-rpi) and [these](https://ubuntu.com/tutorials/how-to-install-ubuntu-desktop-on-raspberry-pi-4#1-overview)
@@ -130,9 +131,20 @@ export ROS_DOMAIN_ID=31 # To ensure domain matches what is on the Pixhawk board 
 4. now try ```ssh rpi_device_name@RPI_IP_ADDRESS``` HA IT WONT WORK!
 5. Now go back to the Rpi and call ```sudo apt install openssh-server```
 6. NOW it should work when you call ```ssh rpi_device_name@RPI_IP_ADDRESS```
-   
-## Troubleshooting for Running Everything Smoothly with ROS and PX4
-### Conda Instructions for Desktop/Laptop
+
+## Making Your Life Easier With Macros
+I also recommend these ones to make ssh-ing into the rpis faster
+```
+alias dronepi='sshpass -p "<PASSWORD>" ssh -t <RPI_NAME>@192.168.X.XXX' #requires sudo apt-get install sshpass
+```
+And I recommend macros to get udp running fast (there's a way to do this with the password automaticlly piped in but it wouldn't work an all of my Rpi's and I'm not sure why)
+```
+alias udp='sudo MicroXRCEAgent serial --dev /dev/serial0 -b 921600'
+```
+
+# General Tips for Running PX4/Gazebo/ROS2 and Installing Everything You Need For A Smooth Experience
+## Conda Instructions
+### For Desktop/Laptop
 1. Go Follow Instructions [here](https://docs.anaconda.com/miniconda/#quick-command-line-install)
 ```
 mkdir -p ~/miniconda3
@@ -146,8 +158,7 @@ and then:
 ~/miniconda3/bin/conda init zsh
 conda config --set auto_activate_base false
 ```
-
-### Conda Instructions For Rpi
+### For Rpi
 You're going to want to use Conda to keep your dependencies in order.
 Specifically, use conda-forge's **miniforge** version of conda, as it emphasises supporting various CPU architectures like _aarch64_ which is what the Raspberry Pi 4 Model B uses (you can check your CPU architecture using the "uname -m" command in bash shell). Normal conda/miniconda doesn't seem to be compatible with Rpi in general (to the best of my knowledge). [Conda-forge](https://conda-forge.org/docs/) is community-driven and separate from Anaconda, INC.
 1. Install miniforge from the instructions [here](https://github.com/conda-forge/miniforge?tab=readme-ov-file#install) (I like the curl instructions).
@@ -159,7 +170,6 @@ echo ". /home/<user>/miniconda3/etc/profile.d/conda.sh" >> ~/.bashrc
 ```
 conda config --set auto_activate_base false
 ```
-
 ### Conda Environment from Yaml
 From instructions [here](https://shandou.medium.com/export-and-create-conda-environment-with-yml-5de619fe5a2)
 1. To save environment as yaml file. Have you environment activated
@@ -171,7 +181,6 @@ It will appear in whatever folder you're in
 ```
 conda env create -f environment.yml
 ```
-
 #### yaml tips
 1. You probably want to delete the pip dependencies portion of the yml file and only install the conda dependencies. Then take the pip dependencies and put them in this form. Doing it from yml takes forever for some reason
 This is the desktop example. wardiNN_desklap_env.yml has these pip dependencies removed. wardiNN_desktop_laptop_env.yaml is the pure yaml as generated orginally.
@@ -260,7 +269,6 @@ sudo apt install ros-<DISTRO>-tf-transformations
 
 ## Acados & AcadosPython Interface Installation Tips
 This will probably be a pain in the ass. These tips should eliminate most if not all of that pain.
-
 You want to use the [CMake installation](https://docs.acados.org/installation/index.html) for Linux/Mac as instructed in the python interface installation [instructions](https://docs.acados.org/python_interface/index.html)
 1. Just note that when it says "Add the path to the compiled shared libraries" by adding the export lines to the .bashrc file, you don't want to use the ~/ shortcut, you want the fully spelled out without the ~/ shortcut to your user's home directory.
 Example:
@@ -309,7 +317,7 @@ run python3 minimal example_ocp.py
 
 And it should run perfectly.
 
-## Fix Deprecated Setuptools Warning
+### Fix Deprecated Setuptools Warning
 When calling colon build in ROS2 you will often see it compile everything perfectly, but throw you a light warning regarding the [depracation regarding setuptools and your setup.cfg file](https://answers.ros.org/question/396439/setuptoolsdeprecationwarning-setuppy-install-is-deprecated-use-build-and-pip-and-other-standards-based-tools/)
 1. Make sure you have underscores ("_") in setup.cfg file for all of the packages you're calling colcon build on, and not hyphens ("-"). (Should already be like this but could be worth checking)
 2. Call this in bash shell according to [instructions](https://answers.ros.org/question/396439/setuptoolsdeprecationwarning-setuppy-install-is-deprecated-use-build-and-pip-and-other-standards-based-tools/)
@@ -327,29 +335,24 @@ pip install setuptools==58.2.0
 colcon build --packages-select **PACKAGE_NAME** --symlink-install
 ```
 6. The **symlink-install** ensures that you can edit python files and not have to rebuild the package every time!
-## Getting Simulation Working on a New Desktop/Laptop (esp Ubuntu 22.04+)
-### If you get the error: "ninja: error: unknown target 'gazebo-classic'"
+
+   
+###  Getting Gazebo Working on a New Desktop/Laptop (esp Ubuntu 22.04+)
+#### If you get the error: "ninja: error: unknown target 'gazebo-classic'"
 ```
 sudo apt remove gz-garden
 sudo apt install aptitude
 sudo aptitude install gazebo libgazebo11 libgazebo-dev
 ```
-### Adding macros to make running iris quad sim and microRTPS easier:
+#### Adding macros to make running iris quad sim and microRTPS easier:
 Go to your ~/.bashrc and add the following two lines:
 1. Desktop/Laptop-
 ```
 alias udp='MicroXRCEAgent udp4 -p 8888'
 alias iris='cd ~/PX4-Autopilot/ && make px4_sitl gazebo-classic'
 ```
-I also recommend these ones to make ssh-ing into the rpis faster
-```
-alias dronepi='sshpass -p "<PASSWORD>" ssh -t <RPI_NAME>@192.168.X.XXX' #requires sudo apt-get install sshpass
-```
-2. Rpi
-```
-alias udp='sudo MicroXRCEAgent serial --dev /dev/serial0 -b 921600'
-```
-### Making Gazebo Better (especially on ubuntu 22.04 w/ ros2 galactic)
+
+#### Making Gazebo Better (especially on ubuntu 22.04 w/ ros2 galactic)
 1. Fix Spawn Point to Be (0,0,0) like [here](https://discuss.px4.io/t/align-px4-local-position-and-gazebo-classic-reference-frame/34038/2)
 ```
 cd /home/evannsm/PX4-Autopilot/Tools/simulation/gazebo-classic
@@ -365,6 +368,17 @@ while gz model --verbose --spawn-file="${modelpath}/${model}/${model_name}.sdf" 
 Here you can update "-x 1.01 -y 0.98 -z 0.83" to:
 ```
 -x 0.0 -y 0.0 -z 0.0
+```
+2. Make the default world much prettier/closer to wireframe view
+
+```
+cd /home/evannsm/PX4-Autopilot/Tools/simulation/gazebo-classic/sitl_gazebo-classic/worlds/empty.world
+```
+Open empty.world in VSCode. Go to the about lines 12-14 and comment them out/delete them. These lines:
+```
+    <!-- <include>
+      <uri>model://asphalt_plane</uri>
+    </include> -->
 ```
 
 ## Help fully deleting ROS2 from your sysem:
