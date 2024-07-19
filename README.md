@@ -132,6 +132,20 @@ export ROS_DOMAIN_ID=31 # To ensure domain matches what is on the Pixhawk board 
 6. NOW it should work when you call ```ssh rpi_device_name@RPI_IP_ADDRESS```
    
 ## Troubleshooting for Running Everything Smoothly with ROS and PX4
+### Conda Instructions for Desktop/Laptop
+1. Go Follow Instructions [here](https://docs.anaconda.com/miniconda/#quick-command-line-install)
+```
+mkdir -p ~/miniconda3
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
+bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+rm -rf ~/miniconda3/miniconda.sh
+```
+and then:
+```
+~/miniconda3/bin/conda init bash
+~/miniconda3/bin/conda init zsh
+conda config --set auto_activate_base false
+```
 
 ### Conda Instructions For Rpi
 You're going to want to use Conda to keep your dependencies in order.
@@ -144,6 +158,18 @@ echo ". /home/<user>/miniconda3/etc/profile.d/conda.sh" >> ~/.bashrc
 3. And then prevent base conda environment from opening by default by having conda activated [and then calling this](https://stackoverflow.com/questions/54429210/how-do-i-prevent-conda-from-activating-the-base-environment-by-default)
 ```
 conda config --set auto_activate_base false
+```
+
+### Conda Environment from Yaml
+From instructions [here](https://shandou.medium.com/export-and-create-conda-environment-with-yml-5de619fe5a2)
+1. To save environment as yaml file. Have you environment activated
+```
+conda env export > environment.yml
+```
+It will appear in whatever folder you're in
+2. To create an environment from yaml file:
+```
+conda env create -f environment.yml
 ```
 
 #### Torch Installation Tips
