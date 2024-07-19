@@ -244,8 +244,15 @@ pip install setuptools==58.2.0
 colcon build --packages-select **PACKAGE_NAME** --symlink-install
 ```
 6. The **symlink-install** ensures that you can edit python files and not have to rebuild the package every time!
+## Getting Simulation Working on a New Computer (esp Ubuntu 22.04+)
 
-## Adding macros to make running iris quad sim and microRTPS easier:
+### If you get the error: "ninja: error: unknown target 'gazebo-classic'"
+```
+sudo apt remove gz-garden
+sudo apt install aptitude
+sudo aptitude install gazebo libgazebo11 libgazebo-dev
+```
+### Adding macros to make running iris quad sim and microRTPS easier:
 Go to your ~/.bashrc and add the following two lines:
 1. Desktop/Laptop-
 ```
