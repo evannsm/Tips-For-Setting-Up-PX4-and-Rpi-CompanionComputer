@@ -390,11 +390,13 @@ Open up "model.sdf" and around line 36 it should say:
 ```
             <name>Gazebo/Grey</name>
 ```
+And you can change /Grey to /White and it'll look more like the nice Wireframe view without swithing to it manually.
+
+
 3. Get Iris parameters
 ```
 cd ~/PX4-Autopilot/Tools/simulation/gazebo-classic/sitl_gazebo-classic/models/iris
 ```
-And you can change /Grey to /White and it'll look more like the nice Wireframe view without swithing to it manually.
 # Help fully deleting ROS2 from your sysem:
 1. https://answers.ros.org/question/57213/how-i-completely-remove-all-ros-from-my-system/
 2. Don't forget to delete ros folders @  /etc/ros/
