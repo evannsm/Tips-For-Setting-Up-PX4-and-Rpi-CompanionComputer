@@ -397,7 +397,10 @@ And you can change /Grey to /White and it'll look more like the nice Wireframe v
 ```
 cd ~/PX4-Autopilot/Tools/simulation/gazebo-classic/sitl_gazebo-classic/models/iris
 ```
-# PyJoules Permission Errors
+# PyJoules
+## Units
+PyJoules on CPU gives units in uJ as seen [here](https://github.com/powerapi-ng/pyJoules/issues/32)
+## Permission Errors
 ```
 sudo chmod -R a+r /sys/class/powercap/intel-rapl
 ```
