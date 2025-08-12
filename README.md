@@ -1,6 +1,8 @@
 # Setting Up PX4 with Ubuntu-Rpi Companion Computer Properly
+Somewhat outdated, probably not-ideal, but (maybe?) still useful tips and tricks that should help beginners to the process of working with PX4 and setting up a Raspberry Pi as a companion computer. In particular, these were the things I was afraid to forget when I started my PhD. I also didn't know how to recreate or navigate through these things very well so I really benefitted from writing everything down until I became familiar enough with these things to be able to depend on knowing how they work/ intuition/ pattern recognition rather than having to write things down and copy-paste instructions to myself.
 
-# 2024 Version
+Hopefully this serves as a quick guide to novices in the space, and as a good way to jog my memory if I ever need to go through the process of setting these things up from scratch again.
+
 Setup instructions and troubleshooting info to set up Ubuntu 22.04.4 LTS (Jammy Jellyfish) on Rasbperry Pi for ROS2 (Humble) and ensure it works with PX4 stack [v1.14.1](https://github.com/PX4/PX4-Autopilot/tags) via Telem2 Port on Pixhawk 6X Board.
 
 ## TODO:
